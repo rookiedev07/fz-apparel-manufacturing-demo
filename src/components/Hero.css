@@ -8,19 +8,22 @@
   overflow: hidden;
 }
 
+/* Background setup */
 .hero-background {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   z-index: 0;
 }
 
 .hero-image {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
   transform: scale(1.05);
   transition: transform 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -31,13 +34,16 @@
 
 .hero-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.4) 100%);
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.25) 0%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+  z-index: 1;
 }
 
+/* Content */
 .hero-content {
   position: relative;
   z-index: 2;
@@ -48,13 +54,14 @@
   animation: fadeInUp 1s ease-out;
 }
 
+/* Typography */
 .hero-title {
   font-family: var(--font-serif);
-  font-size: clamp(40px, 6vw, 72px);
+  font-size: clamp(36px, 6vw, 72px);
   font-weight: 600;
   line-height: 1.2;
   margin-bottom: var(--spacing-md);
-  letter-spacing: -1px;
+  letter-spacing: -0.5px;
 }
 
 .hero-subtitle {
@@ -65,6 +72,7 @@
   opacity: 0.95;
 }
 
+/* Buttons */
 .hero-actions {
   display: flex;
   gap: var(--spacing-md);
@@ -73,14 +81,14 @@
 }
 
 .btn {
-  padding: 16px 40px;
+  padding: 14px 36px;
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 1px;
   text-transform: uppercase;
-  border-radius: 2px;
+  border-radius: 3px;
   transition: all var(--transition-medium);
-  min-width: 180px;
+  min-width: 160px;
 }
 
 .btn-primary {
@@ -89,7 +97,7 @@
 }
 
 .btn-primary:hover {
-  background-color: #A00D25;
+  background-color: #a00d25;
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(200, 16, 46, 0.3);
 }
@@ -106,21 +114,37 @@
   transform: translateY(-2px);
 }
 
+/* Animation */
 @keyframes fadeInUp {
   from {
     opacity: 0;
     transform: translateY(30px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
+/* RESPONSIVENESS */
+@media (max-width: 1024px) {
+  .hero {
+    height: 90vh;
+  }
+
+  .hero-title {
+    font-size: clamp(32px, 5vw, 60px);
+  }
+}
+
 @media (max-width: 768px) {
   .hero {
+    height: 85vh;
     min-height: 500px;
+  }
+
+  .hero-content {
+    padding: 0 24px;
   }
 
   .hero-actions {
@@ -131,5 +155,40 @@
   .btn {
     width: 100%;
     max-width: 280px;
+  }
+
+  .hero-image {
+    object-position: center 30%; /* Shift focus higher to show face */
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    height: 80vh;
+  }
+
+  .hero-image {
+    object-position: center 25%; /* Show upper portion of image on mobile */
+    transform: scale(1.02); /* Minimal scale to avoid cropping */
+  }
+
+  .hero-title {
+    font-size: 28px;
+  }
+
+  .hero-subtitle {
+    font-size: 15px;
+  }
+
+  .btn {
+    padding: 12px 30px;
+    font-size: 13px;
+  }
+}
+
+/* Extra small devices - adjust further if needed */
+@media (max-width: 375px) {
+  .hero-image {
+    object-position: center 20%; /* Focus even higher on very small screens */
   }
 }
