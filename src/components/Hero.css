@@ -24,12 +24,12 @@
   height: 100%;
   object-fit: cover;
   object-position: center center;
-  transform: scale(1.05);
+  transform: scaleX(-1) scale(1.05); /* Mirror horizontally + slight zoom */
   transition: transform 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .hero:hover .hero-image {
-  transform: scale(1.1);
+  transform: scaleX(-1) scale(1.1); /* Maintain mirror on hover */
 }
 
 .hero-overlay {
@@ -158,7 +158,8 @@
   }
 
   .hero-image {
-    object-position: center center; /* Keep image centered on tablets */
+    object-position: center center;
+    transform: scaleX(-1) scale(1.06); /* Maintain mirror and fit */
   }
 }
 
@@ -168,8 +169,8 @@
   }
 
   .hero-image {
-    object-position: center center; /* Center image visually on mobile */
-    transform: scale(1.08); /* Slight upscale to ensure no blank edges */
+    object-position: center center;
+    transform: scaleX(-1) scale(1.08); /* Centered and mirrored on mobile */
   }
 
   .hero-title {
