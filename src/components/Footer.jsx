@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="footer-container">
         <div className="footer-main">
           <div className="footer-brand">
-            <h3 className="footer-logo">FZ Apparel</h3>
+            <h3 className="footer-logo">Clothique</h3>
             <p className="footer-tagline">Refined. Minimal. Fearlessly You.</p>
           </div>
 
@@ -59,7 +59,7 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom">
-          <p>&copy; 2025 FZ Apparel. All rights reserved.</p>
+          <p>&copy; 2025 Clothique. All rights reserved.</p>
           <div className="footer-social">
             <a href="#" aria-label="Instagram">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
